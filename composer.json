@@ -1,0 +1,53 @@
+{
+  "name": "blomstra/user-filter",
+  "description": "Filter discussion lists by discussion author.",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^1.2.0"
+  },
+  "authors": [
+    {
+      "name": "David Wheatley",
+      "email": "hi@davwheat.dev",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Blomstra\\UserFilter\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Author Filter",
+      "category": "feature",
+      "icon": {
+          "name": "fas fa-user-cog",
+          "backgroundColor": "#EBF1FD",
+          "color": "#3a98d0"
+      }
+    },
+    "flarum-cli": {
+      "modules": {
+        "admin": true,
+        "forum": true,
+        "js": true,
+        "jsCommon": true,
+        "css": true,
+        "locale": true,
+        "gitConf": true,
+        "githubActions": true,
+        "prettier": true,
+        "typescript": true,
+        "bundlewatch": false,
+        "backendTesting": false,
+        "editorConfig": false,
+        "styleci": true
+      }
+    }
+  }
+}

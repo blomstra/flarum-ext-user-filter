@@ -1,0 +1,12 @@
+blomstra-user-filter:
+  forum:
+    index_page:
+      filter_user:
+        accessible_label: Filter by user
+        all: All
+        label: "Filter by user: {text}"
+        search_label: Search users...
+        no_results: No results
+        start_typing: Start typing...
+        keep_typing: Keep typing...
+        remove_filter: Remove user filter
