@@ -41,6 +41,7 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
     if (this.state.loading) {
       content.push(<LoadingIndicator />);
     } else if (this.state.searchQuery().length < this.minSearchLength()) {
+      this.state.lastSearchedQuery = '';
       content.push(
         <span>
           {extractText(
