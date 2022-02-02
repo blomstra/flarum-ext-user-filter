@@ -123,7 +123,12 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
     this.state.lastSearchedQuery = query;
     m.redraw();
 
-    this.state.currentData = await app.store.find<User[]>('users', { filter: { q: query }, page: { limit: this.maxResults() } });
+    const data = await app.store.find<User[]>('users', { filter: { q: query }, page: { limit: this.maxResults() } });
+
+    // Prevent race conditions where a new search will finish before an old search
+    if (this.state.searchQuery() !== query) return;
+
+    this.state.currentData = data;
 
     this.state.loading = false;
     m.redraw();
