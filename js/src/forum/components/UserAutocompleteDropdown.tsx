@@ -16,10 +16,14 @@ interface IAttrs {}
 
 interface IState {
   currentData: User[];
+  value: Stream<string>;
   searchQuery: Stream<string>;
   lastSearchedQuery: string;
   loading: boolean;
+  timeoutKey: number | null;
 }
+
+const DEBOUNCE_TIME = 250;
 
 export default class UserAutocompleteDropdown extends Component<IAttrs, IState> {
   oninit(vnode: Mithril.Vnode<IAttrs, this>): void {
@@ -27,9 +31,11 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
 
     this.state = {
       currentData: [],
+      value: Stream(''),
       searchQuery: Stream(''),
       lastSearchedQuery: '',
       loading: false,
+      timeoutKey: null,
     };
   }
 
@@ -89,7 +95,16 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
           type="text"
           class="FormControl"
           placeholder={extractText(app.translator.trans('blomstra-user-filter.forum.index_page.filter_user.search_label'))}
-          bidi={this.state.searchQuery}
+          value={this.state.value()}
+          oninput={(e: InputEvent) => {
+            this.state.value(e.currentTarget!.value);
+
+            this.state.timeoutKey && clearTimeout(this.state.timeoutKey);
+            this.state.timeoutKey = setTimeout(() => {
+              this.state.searchQuery(e.target!.value);
+              m.redraw();
+            }, DEBOUNCE_TIME);
+          }}
         />
 
         <Separator />
