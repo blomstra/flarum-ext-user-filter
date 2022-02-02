@@ -3,7 +3,7 @@
 /*
  * This file is part of blomstra/user-filter.
  *
- * Copyright (c) 2022 David Wheatley.
+ * Copyright (c) 2022 Blomstra Ltd
  *
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.

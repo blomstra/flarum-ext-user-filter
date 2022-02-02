@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of blomstra/user-filter.
+ *
+ * Copyright (c) 2022 Blomstra Ltd
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Blomstra\UserFilter\Middleware;
 
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -17,7 +26,7 @@ class AddUserFilter implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // We only want to apply filtering if we show the discussion list.
-        if (!$this->isDiscussionListPath($request)) {
+        if (! $this->isDiscussionListPath($request)) {
             return $handler->handle($request);
         }
 
