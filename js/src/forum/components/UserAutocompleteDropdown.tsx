@@ -46,7 +46,7 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
         <span>
           {extractText(
             app.translator.trans(
-              `blomstra-user-filter.forum.index_page.filter_user.${this.state.currentData.length === 0 ? 'start_typing' : 'keep_typing'}`
+              `blomstra-user-filter.forum.index_page.filter_user.${this.state.searchQuery().length === 0 ? 'start_typing' : 'keep_typing'}`
             )
           )}
         </span>
