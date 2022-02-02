@@ -1,4 +1,9 @@
 blomstra-user-filter:
+  admin:
+    settings:
+      min_length: Minimum chars to begin searching
+      result_count: Max results in dropdown autocomplete
+
   forum:
     index_page:
       filter_user:

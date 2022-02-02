@@ -21,8 +21,6 @@ interface IState {
   loading: boolean;
 }
 
-const MIN_SEARCH_LENGTH = 3;
-
 export default class UserAutocompleteDropdown extends Component<IAttrs, IState> {
   oninit(vnode: Mithril.Vnode<IAttrs, this>): void {
     super.oninit(vnode);
@@ -42,7 +40,7 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
 
     if (this.state.loading) {
       content.push(<LoadingIndicator />);
-    } else if (this.state.searchQuery().length < MIN_SEARCH_LENGTH) {
+    } else if (this.state.searchQuery().length < this.minSearchLength()) {
       content.push(
         <span>
           {extractText(
@@ -100,10 +98,22 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
     );
   }
 
+  protected minSearchLength(): number {
+    const val = app.forum.attribute<number>('blomstraUserFilter.minSearchLength');
+
+    return val > 0 ? val : 3;
+  }
+
+  protected maxResults(): number {
+    const val = app.forum.attribute<number>('blomstraUserFilter.resultCount');
+
+    return val > 0 ? val : 5;
+  }
+
   async performSearch(query: string): Promise<void> {
     if (this.state.lastSearchedQuery === query) return;
 
-    if (this.state.searchQuery().length < MIN_SEARCH_LENGTH) {
+    if (this.state.searchQuery().length < this.minSearchLength()) {
       this.state.currentData = [];
       return;
     }
@@ -112,7 +122,7 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
     this.state.lastSearchedQuery = query;
     m.redraw();
 
-    this.state.currentData = await app.store.find<User[]>('users', { filter: { q: query }, page: { limit: 10 } });
+    this.state.currentData = await app.store.find<User[]>('users', { filter: { q: query }, page: { limit: this.maxResults() } });
 
     this.state.loading = false;
     m.redraw();

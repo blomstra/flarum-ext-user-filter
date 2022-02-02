@@ -18,8 +18,15 @@ return [
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/less/forum.less'),
 
+    (new Extend\Frontend('admin'))
+        ->js(__DIR__.'/js/dist/admin.js'),
+
     new Extend\Locales(__DIR__.'/locale'),
 
     (new Extend\Middleware('forum'))
         ->add(Middleware\AddUserFilter::class),
+
+    (new Extend\Settings())
+        ->serializeToForum('blomstraUserFilter.minSearchLength', 'blomstraUserFilter.minSearchLength', 'intval', 3)
+        ->serializeToForum('blomstraUserFilter.resultCount', 'blomstraUserFilter.resultCount', 'intval', 3),
 ];
