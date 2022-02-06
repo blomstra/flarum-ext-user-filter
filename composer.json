@@ -9,6 +9,12 @@
   "require": {
     "flarum/core": "^1.2.0"
   },
+  "homepage": "https://blomstra.net",
+  "support": {
+    "forum": "https://discuss.flarum.org",
+    "issues" : "https://github.com/blomstra/flarum-ext-user-filter/issues",
+    "source": "https://github.com/blomstra/flarum-ext-user-filter"
+  },
   "authors": [
     {
       "name": "David Wheatley",

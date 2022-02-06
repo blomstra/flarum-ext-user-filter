@@ -15,13 +15,12 @@ composer require blomstra/user-filter:"*"
 ## Updating
 
 ```sh
-composer update blomstra/user-filter:"*"
-php flarum migrate
+composer update blomstra/user-filter
 php flarum cache:clear
 ```
 
 ## Links
 
 - [Packagist](https://packagist.org/packages/blomstra/user-filter)
-- [GitHub](https://github.com/blomstra/user-filter)
+- [GitHub](https://github.com/blomstra/flarum-ext-user-filter)
 - [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)

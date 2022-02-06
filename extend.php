@@ -28,5 +28,5 @@ return [
 
     (new Extend\Settings())
         ->serializeToForum('blomstraUserFilter.minSearchLength', 'blomstraUserFilter.minSearchLength', 'intval', 3)
-        ->serializeToForum('blomstraUserFilter.resultCount', 'blomstraUserFilter.resultCount', 'intval', 3),
+        ->serializeToForum('blomstraUserFilter.resultCount', 'blomstraUserFilter.resultCount', 'intval', 5),
 ];
