@@ -23,4 +23,4 @@ php flarum cache:clear
 
 - [Packagist](https://packagist.org/packages/blomstra/user-filter)
 - [GitHub](https://github.com/blomstra/flarum-ext-user-filter)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [Discuss](https://discuss.flarum.org/d/30153)
