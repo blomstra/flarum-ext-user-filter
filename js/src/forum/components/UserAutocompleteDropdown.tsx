@@ -90,6 +90,9 @@ export default class UserAutocompleteDropdown extends Component<IAttrs, IState> 
         label={this.label}
         updateOnClose
         accessibleToggleLabel={app.translator.trans('blomstra-user-filter.forum.index_page.filter_user.accessible_label')}
+        onshow={() => {
+          $('input').focus();
+        }}
       >
         <input
           type="text"
