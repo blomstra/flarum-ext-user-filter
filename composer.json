@@ -13,7 +13,8 @@
   "support": {
     "forum": "https://discuss.flarum.org/d/30153",
     "issues" : "https://github.com/blomstra/flarum-ext-user-filter/issues",
-    "source": "https://github.com/blomstra/flarum-ext-user-filter"
+    "source": "https://github.com/blomstra/flarum-ext-user-filter",
+    "email": "helpdesk@blomstra.net"
   },
   "authors": [
     {
