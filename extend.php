@@ -11,6 +11,7 @@
 
 namespace Blomstra\UserFilter;
 
+use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
 
 return [
@@ -29,4 +30,9 @@ return [
     (new Extend\Settings())
         ->serializeToForum('blomstraUserFilter.minSearchLength', 'blomstraUserFilter.minSearchLength', 'intval', 3)
         ->serializeToForum('blomstraUserFilter.resultCount', 'blomstraUserFilter.resultCount', 'intval', 5),
+
+    (new Extend\ApiSerializer(ForumSerializer::class))
+        ->attribute('canUseBlomstraUserFilter', function (ForumSerializer $serializer) {
+            return $serializer->getActor()->can('searchUsers');
+        })
 ];

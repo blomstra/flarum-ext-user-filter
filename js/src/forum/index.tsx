@@ -13,7 +13,9 @@ app.initializers.add('blomstra/user-filter', () => {
   extend(IndexPage.prototype, 'viewItems', function (items: ItemList<Mithril.Children>) {
     if (app.current.data.routeName === 'byobuPrivate') return;
 
-    items.add('userFilter', <UserAutocompleteDropdown />, -15);
+    if (!!app.forum.attribute('canUseBlomstraUserFilter')) {
+      items.add('userFilter', <UserAutocompleteDropdown />, -15);
+    }
   });
 
   extend(DiscussionListState.prototype, 'requestParams', function (this: DiscussionListState, params: Record<string, any>) {
